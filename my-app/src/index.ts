@@ -1,10 +1,16 @@
+import caclculeExercue
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
 
-app.get("/", (req, res) => {
-  res.send("Hello from Express!");
+app.use(bodyParser.json());
+
+app.post("/exercises", (req, res) => {
+  const exercises = req.body;
+  const result = calculateExercises();
+  res.json(result);
 });
 
-app.listen(3000, () => {
-  console.log("Express server is running on http://localhost:3000");
+app.listen(3002, () => {
+  console.log("Express server is running on http://localhost:3002");
 });
